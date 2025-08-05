@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react';
 import API from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const role = localStorage.getItem("role");
+  const doctorId = parseInt(localStorage.getItem("userId"));
 
   useEffect(() => {
-    const doctorId = parseInt(localStorage.getItem("userId")); // get doctor ID
+    if (role !== "DOCTOR") return;
 
     if (!doctorId) {
       setError("Doctor ID not found. Please log in again.");
@@ -25,14 +30,21 @@ export default function Dashboard() {
         console.error(err);
         setLoading(false);
       });
-  }, []);
+  }, [doctorId, role]);
 
   return (
     <div style={{ padding: '20px' }}>
       <h1>Doctor Dashboard</h1>
 
-      {loading && <p>Loading records...</p>}
+      {role === "DOCTOR" && (
+        <button onClick={() => navigate('/add-record')}>
+          ➕ Add Medical Record
+        </button>
+      )}
 
+      <br /><br />
+
+      {loading && <p>Loading records...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {!loading && !error && (

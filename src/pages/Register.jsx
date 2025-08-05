@@ -35,38 +35,70 @@ export default function Register() {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Patient Registration</h1>
+    <div style={{ padding: '2rem', maxWidth: '500px', margin: 'auto' }}>
+      <h1 style={{ textAlign: 'center' }}>Patient Registration</h1>
       <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        /><br /><br />
-        <input
-          type="email"
-          placeholder="Email Address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        /><br /><br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        /><br /><br />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        /><br /><br />
-        <button type="submit">Register</button>
+        <table style={{ width: '100%' }}>
+          <tbody>
+            <tr>
+              <td><label>Full Name:</label></td>
+              <td>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </td>
+            </tr>
+            <tr><td colSpan="2" style={{ height: '10px' }}></td></tr>
+
+            <tr>
+              <td><label>Email:</label></td>
+              <td>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </td>
+            </tr>
+            <tr><td colSpan="2" style={{ height: '10px' }}></td></tr>
+
+            <tr>
+              <td><label>Password:</label></td>
+              <td>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </td>
+            </tr>
+            <tr><td colSpan="2" style={{ height: '10px' }}></td></tr>
+
+            <tr>
+              <td><label>Confirm Password:</label></td>
+              <td>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </td>
+            </tr>
+            <tr><td colSpan="2" style={{ height: '10px' }}></td></tr>
+
+            <tr>
+              <td colSpan="2" style={{ textAlign: 'center' }}>
+                <button type="submit">Register</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </form>
     </div>
   );
