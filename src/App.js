@@ -6,6 +6,9 @@ import AdminDashboard from './pages/AdminDashboard';
 import DoctorDashboard from './pages/DoctorDashboard';
 import PatientDashboard from './pages/PatientDashboard';
 import AddDoctor from './pages/AddDoctor';
+import BookAppointment from './pages/BookAppointment';
+import PatientAppointments from './pages/PatientAppointments';
+import DoctorAppointments from './pages/DoctorAppointments';
 
 function App() {
   return (
@@ -25,6 +28,27 @@ function App() {
               localStorage.getItem("role") === "ADMIN" ? <AddDoctor /> : <Navigate to="/" />
          }
         />
+        <Route
+            path="/book-appointment"
+            element={
+              localStorage.getItem("role") === "PATIENT" ? (
+                <BookAppointment />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+          <Route
+            path="/appointments"
+            element={
+              localStorage.getItem("role") === "PATIENT" ? (
+                <PatientAppointments />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+          <Route path="/doctor-appointments" element={<DoctorAppointments />} />
       </Routes>
     </Router>
   );
